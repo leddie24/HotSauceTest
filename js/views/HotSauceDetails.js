@@ -10,6 +10,18 @@ var HotSauceDetails = React.createClass({
          info: sauceInfo
       }
    },
+   _fixImage: function(e) {
+      var target = e.currentTarget;
+      var parent = target.parentElement;
+      var pHeight = parent.offsetHeight;
+      var pWidth = parent.offsetWidth;
+      var factor;
+      if (target.height >= target.width) {
+         factor = pHeight / target.height;
+         var height = target.height * factor;
+         target.style.height = height + 'px';
+      }
+   },
    render: function() {
       return (
          <div className="sauceDetails">
@@ -19,7 +31,7 @@ var HotSauceDetails = React.createClass({
                <div className="sauceImgContainer">
                   <img className="sauceImg tall" 
                         src={this.state.info.imageURL} 
-                        />
+                        onLoad={this._fixImage}/>
                </div>
             </div>
             <div className="detailsRight">

@@ -55,8 +55,8 @@
 
 	// Components/Views
 	var AppHome = __webpack_require__(230);
-	var HotSauceList = __webpack_require__(252);
-	var HotSauceDetails = __webpack_require__(253);
+	var HotSauceList = __webpack_require__(250);
+	var HotSauceDetails = __webpack_require__(252);
 
 	const app = document.getElementById('app');
 
@@ -27180,40 +27180,7 @@
 
 
 /***/ },
-/* 250 */,
-/* 251 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(4);
-	var Link = __webpack_require__(1).Link;
-
-	var HotSauce = React.createClass({displayName: "HotSauce",
-	   // Click handler to view details page
-	   viewDetails: function() {
-	      this.props.onClick();
-	   },
-	   render: function() {
-	      return (
-	         React.createElement("div", {className: "saucePanel", 
-	               onClick: this.viewDetails
-	               }, 
-	            React.createElement("div", {className: "sauceImgContainer"}, 
-	               React.createElement("img", {src: this.props.info.imageURL, 
-	                  alt: this.props.info.title})
-	            ), 
-	            React.createElement("div", {className: "sauceTitle"}, 
-	               React.createElement("h2", null, this.props.info.title), 
-	               React.createElement("p", {className: "subtitle"}, this.props.info.subtitle)
-	            )
-	         )
-	      );
-	   }
-	});
-
-	module.exports = HotSauce;
-
-/***/ },
-/* 252 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(4);
@@ -27250,7 +27217,39 @@
 	module.exports = HotSauceList;
 
 /***/ },
-/* 253 */
+/* 251 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(4);
+	var Link = __webpack_require__(1).Link;
+
+	var HotSauce = React.createClass({displayName: "HotSauce",
+	   // Click handler to view details page
+	   viewDetails: function() {
+	      this.props.onClick();
+	   },
+	   render: function() {
+	      return (
+	         React.createElement("div", {className: "saucePanel", 
+	               onClick: this.viewDetails
+	               }, 
+	            React.createElement("div", {className: "sauceImgContainer"}, 
+	               React.createElement("img", {src: this.props.info.imageURL, 
+	                  alt: this.props.info.title})
+	            ), 
+	            React.createElement("div", {className: "sauceTitle"}, 
+	               React.createElement("h2", null, this.props.info.title), 
+	               React.createElement("p", {className: "subtitle"}, this.props.info.subtitle)
+	            )
+	         )
+	      );
+	   }
+	});
+
+	module.exports = HotSauce;
+
+/***/ },
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(4);
@@ -27265,6 +27264,18 @@
 	         info: sauceInfo
 	      }
 	   },
+	   _fixImage: function(e) {
+	      var target = e.currentTarget;
+	      var parent = target.parentElement;
+	      var pHeight = parent.offsetHeight;
+	      var pWidth = parent.offsetWidth;
+	      var factor;
+	      if (target.height >= target.width) {
+	         factor = pHeight / target.height;
+	         var height = target.height * factor;
+	         target.style.height = height + 'px';
+	      }
+	   },
 	   render: function() {
 	      return (
 	         React.createElement("div", {className: "sauceDetails"}, 
@@ -27273,8 +27284,8 @@
 	               React.createElement("h1", null, this.state.info.title), 
 	               React.createElement("div", {className: "sauceImgContainer"}, 
 	                  React.createElement("img", {className: "sauceImg tall", 
-	                        src: this.state.info.imageURL}
-	                        )
+	                        src: this.state.info.imageURL, 
+	                        onLoad: this._fixImage})
 	               )
 	            ), 
 	            React.createElement("div", {className: "detailsRight"}, 
