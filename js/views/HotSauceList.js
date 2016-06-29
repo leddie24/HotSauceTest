@@ -2,7 +2,6 @@ var React = require('react');
 var axios = require('axios');
 var hashHistory = require('react-router').hashHistory;
 
-var HotSauceStore = require('../stores/HotSauceStore');
 var HotSauce = require('./HotSauce');
 
 
