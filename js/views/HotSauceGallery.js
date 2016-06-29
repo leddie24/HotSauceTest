@@ -31,7 +31,6 @@ var HotSauceGallery = React.createClass({
         });
    },
   viewDetails: function(idx) {
-    alert(idx);
     hashHistory.push('details/0');
   },
    render: function() {
