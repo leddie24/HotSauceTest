@@ -2,7 +2,7 @@ var React = require('react');
 var Link = require('react-router').Link;
 
 var HotSauce = React.createClass({
-   // <Link className="test" to="/details" params={{id: this.props.id}}>
+   // Click handler to view details page
    viewDetails: function() {
       this.props.onClick();
    },

@@ -25952,14 +25952,14 @@
 	      }
 	   },
 	   componentDidMount: function() {
-	      console.log('will mount app home');
 	      var _this = this;
 	      axios.get("../hotsauces.json").then(function(result) {    
-	         console.log('SAUCE LIST FROM APP HOME', result.data.list);
 	         _this.setState({ sauces: result.data.list });
 	      });
 	   },
 	   render: function() {
+
+	      // Is this proper way of transferring state to children?
 	      return React.cloneElement(
 	            this.props.children, 
 	            { sauces: this.state.sauces }
@@ -27189,15 +27189,7 @@
 	var axios = __webpack_require__(231);
 	var hashHistory = __webpack_require__(1).hashHistory;
 
-	var HotSauceStore = __webpack_require__(251);
 	var HotSauce = __webpack_require__(257);
-
-
-	function getStateFromStore() {
-	  return {
-	    // hotSauces: HotSauceStore.getAll()
-	  };
-	}
 
 	var HotSauceGallery = React.createClass({displayName: "HotSauceGallery",
 	   getInitialState: function() {
@@ -27916,7 +27908,7 @@
 	var Link = __webpack_require__(1).Link;
 
 	var HotSauce = React.createClass({displayName: "HotSauce",
-	   // <Link className="test" to="/details" params={{id: this.props.id}}>
+	   // Click handler to view details page
 	   viewDetails: function() {
 	      this.props.onClick();
 	   },
@@ -27993,27 +27985,16 @@
 	         info: sauceInfo
 	      }
 	   },
-	   _onLoad: function(e) {
-	      console.log(e.target.offsetWidth);
-	   },
 	   render: function() {
-	      // var sauceInfo = this.state.info;
-	      // console.log('SAUCEINFO', sauceInfo);
-	      var sauceList = this.props.sauces[0];
-	      console.log('SAUCELIST', sauceList);
-	      console.log('STATE', this.state.info);
-
-	      var idx = this.props.params.id;
-	      console.log(idx, 'idx');
 	      return (
 	         React.createElement("div", {className: "sauceDetails"}, 
 	            React.createElement("div", {className: "detailsLeft"}, 
 	               React.createElement(Link, {to: "/"}, "< Back to Hot Sauce List"), 
 	               React.createElement("h1", null, this.state.info.title), 
 	               React.createElement("div", {className: "sauceImgContainer"}, 
-	                  React.createElement("img", {className: "sauceImg", 
-	                        src: this.state.info.imageURL, 
-	                        onLoad: this._onLoad})
+	                  React.createElement("img", {className: "sauceImg tall", 
+	                        src: this.state.info.imageURL}
+	                        )
 	               )
 	            ), 
 	            React.createElement("div", {className: "detailsRight"}, 
@@ -28024,8 +28005,6 @@
 	   }
 	});
 
-	// <h1>{sauceInfo.title}</h1>
-	//             <img src={sauceInfo.imageURL} />
 	module.exports = HotSauceDetails;
 
 /***/ }

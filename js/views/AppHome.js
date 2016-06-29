@@ -10,14 +10,14 @@ var App = React.createClass({
       }
    },
    componentDidMount: function() {
-      console.log('will mount app home');
       var _this = this;
       axios.get("../hotsauces.json").then(function(result) {    
-         console.log('SAUCE LIST FROM APP HOME', result.data.list);
          _this.setState({ sauces: result.data.list });
       });
    },
    render: function() {
+
+      // Is this proper way of transferring state to children?
       return React.cloneElement(
             this.props.children, 
             { sauces: this.state.sauces }

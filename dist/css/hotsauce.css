@@ -9,8 +9,11 @@ html, body {
   height: 100%;
 }
 
+
+/* Gallery CSS */
 #app {
    margin: 0px auto;
+   width: 1000px;
    padding: 10px 20px;
    min-height: 100%;
    display: flex;
@@ -75,6 +78,9 @@ html, body {
    font-size: 0.7em;
 }
 
+
+/* Sauce Details Page */
+
 #app .sauceDetails {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,14 +91,22 @@ html, body {
   align-items: stretch;
   align-content: stretch;
   height: 100%;
-  max-height: 700px;
+  max-height: 800px;
 }
 
 .sauceDetails .detailsLeft {
-  order: 1;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+.sauceDetails .detailsRight {
+  background: #eee;
+  padding: 10px;  
+  width: 34%;
+  flex-shrink: 0;
+  word-wrap: break-word;
+
 }
 
 .sauceDetails .detailsLeft a {
@@ -104,24 +118,15 @@ html, body {
 
 .sauceDetails .sauceImgContainer {
   display: flex;
-
-  -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
-    -webkit-flex: 1 1 auto;
-    flex: 1 1 auto; 
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   background: #ccc;
 }
-.sauceDetails .sauceImgContainer img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
 
-.sauceDetails .detailsRight {
-  order: 2;
-  background: #eee;
-  padding: 10px;  
-  width: 34%;
+.sauceDetails .sauceImgContainer img {
+    object-fit: cover;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
 }

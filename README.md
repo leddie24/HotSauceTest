@@ -1,4 +1,9 @@
 # Build the hot sauce list
+## Build instructions
+1. run "npm install" in terminal
+2. run "npm run start"
+3. Open up localhost:8000 in your browser
+
 ## Overview
 Hello awesome candidate! You will be building the amazing hot sauce list. The list will contain rows of hot sauces that shows a picture and title in each row. Each row will be clickable and navigate you to that rows hot sauce details view. The details view will show the picture, title, description, and extra details about the hot sauce. The goal of this project is to see how far you can go. We understand you may not be familiar with some of the required technologies and that’s okay. We want you to do the best you can.
 
