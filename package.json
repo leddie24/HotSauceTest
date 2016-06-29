@@ -1,0 +1,24 @@
+{
+  "name": "hot_sauce_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run webpack & npm run serve",
+    "start-node": "npm run webpack & npm run serve-node",
+    "webpack": "webpack -w",
+    "serve": "cd dist && python -m SimpleHTTPServer",
+    "serve-node": "node ./node_modules/node-http-server/server/http.js root=./dist port=8888 launch=now"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jsx-loader": "^0.12.2",
+    "reactify": "^0.15.2",
+    "webpack": "^1.5.3"
+  },
+  "dependencies": {
+    "flux": "^2.1.1",
+    "react": "^15.1.0"
+  }
+}

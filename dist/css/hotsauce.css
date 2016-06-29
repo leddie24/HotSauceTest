@@ -1,0 +1,60 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+#app {
+   margin: 30px auto;
+   max-width: 960px;
+}
+
+.galleryContainer {
+   display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+ 
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.galleryContainer .saucePanel {
+   width: 23%;
+   margin: 5px;
+   display: -webkit-flex;
+   display: -ms-flexbox;
+   display: flex;
+   flex-direction: column;
+   background: #ddd;
+}
+
+.galleryContainer .saucePanel:hover {
+   cursor: pointer;
+}
+
+.sauceImgContainer {
+   border: 1px solid #aaa;
+   height: 250px;
+   background: #fff;
+}
+
+.saucePanel img {
+   display: block;
+   width: 100%;
+   height: 100%;
+}
+
+.sauceTitle {
+   padding: 10px;
+}
+
+.sauceTitle h2 {
+   margin: 0 0 5px;
+   font-size: 1.2em;
+}
+
+.sauceTitle .subtitle {
+   font-size: 0.7em;
+}
