@@ -1,24 +1,31 @@
-var React = require('react');
-var axios = require('axios');
-var hashHistory = require('react-router').hashHistory;
+import React from "react";
+import hashHistory from "react-router";
 
-var HotSauce = require('./HotSauce');
+import HotSauce from "./HotSauce";
 
-var HotSauceList = React.createClass({
-    // View Details page
-    viewDetails: function(idx) {
-      hashHistory.push('details/' + idx);
-    },
-    // Helper method to generate HotSauce components
-    _createHotSaucePanel: function(sauce, idx) {
-      var _this = this;
+console.log('test');
+
+export default class HotSauceList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.viewDetails = this.viewDetails.bind(this);
+    this._createHotSaucePanel = this._createHotSaucePanel.bind(this);
+  }
+
+  viewDetails(idx) {
+    hashHistory.push('details/' + idx);
+  }
+
+  _createHotSaucePanel(sauce, idx) {
+    let _this = this;
       return <HotSauce key={idx}
                       id={idx}
                       onClick={_this.viewDetails.bind(null, idx)}
                       info={sauce} />;
-    },
-    render: function() {
-      return (
+  }
+
+  render() {
+    return (
          <div>
             <h1>Hot Sauce List</h1>
             <div className='galleryContainer'>
@@ -26,7 +33,5 @@ var HotSauceList = React.createClass({
             </div>
          </div>
       );
-    }
-});
-
-module.exports = HotSauceList;
+  }
+}

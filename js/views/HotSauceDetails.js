@@ -1,16 +1,17 @@
-var React = require('react');
-var Link = require('react-router').Link;
+import React from "react";
+import Link from "react-router";
 
-
-var HotSauceDetails = React.createClass({
-   getInitialState: function() {
-      var idx = this.props.params.id;
-      var sauceInfo = this.props.sauces[idx];
-      return {
+export default class HotSauceDetails extends React.Component {
+   constructor() {
+      super();
+      let idx = this.props.params.id;
+      let sauceInfo = this.props.sauces[idx];
+      this.state = {
          info: sauceInfo
-      }
-   },
-   _fixImage: function(e) {
+      };
+   }
+
+   _fixImage(e) {
       var target = e.currentTarget;
       var parent = target.parentElement;
       var pHeight = parent.offsetHeight;
@@ -21,8 +22,9 @@ var HotSauceDetails = React.createClass({
          var height = target.height * factor;
          target.style.height = height + 'px';
       }
-   },
-   render: function() {
+   }
+
+   render() {
       return (
          <div className="sauceDetails">
             <div className="detailsLeft">
@@ -40,6 +42,4 @@ var HotSauceDetails = React.createClass({
          </div>
       );
    }
-});
-
-module.exports = HotSauceDetails;
+}

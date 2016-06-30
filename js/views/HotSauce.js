@@ -1,12 +1,12 @@
-var React = require('react');
-var Link = require('react-router').Link;
+import React from "react";
+import Link from "react-router";
 
-var HotSauce = React.createClass({
-   // Click handler to view details page
-   viewDetails: function() {
+export default class HotSauce extends React.Component {
+   viewDetails() {
       this.props.onClick();
-   },
-   render: function() {
+   }
+
+   render() {
       return (
          <div className="saucePanel"
                onClick={this.viewDetails}
@@ -22,6 +22,4 @@ var HotSauce = React.createClass({
          </div>
       );
    }
-});
-
-module.exports = HotSauce;
+}
