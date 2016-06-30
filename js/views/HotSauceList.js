@@ -1,9 +1,7 @@
 import React from "react";
-import hashHistory from "react-router";
+import { hashHistory } from "react-router";
 
 import HotSauce from "./HotSauce";
-
-console.log('test');
 
 export default class HotSauceList extends React.Component {
   constructor(props) {

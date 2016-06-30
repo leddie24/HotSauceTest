@@ -1,9 +1,10 @@
 import React from "react";
-import Link from "react-router";
+import { Link } from "react-router";
 
 export default class HotSauceDetails extends React.Component {
-   constructor() {
-      super();
+   constructor(prop) {
+      super(prop);
+      this._fixImage = this._fixImage.bind(this);
       let idx = this.props.params.id;
       let sauceInfo = this.props.sauces[idx];
       this.state = {

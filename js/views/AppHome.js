@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-console.log('test');
-
 export default class AppHome extends React.Component {
    constructor() {
       super();

@@ -2,6 +2,11 @@ import React from "react";
 import Link from "react-router";
 
 export default class HotSauce extends React.Component {
+   constructor(props) {
+    super(props);
+    this.viewDetails = this.viewDetails.bind(this);
+  }
+
    viewDetails() {
       this.props.onClick();
    }
