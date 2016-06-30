@@ -132,7 +132,8 @@ html, body {
     width: 50vw;
   height: 100%;
   background:  center center no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
+  background-color: #ccc;
 }
 
 .sauceDetails .sauceImgContainer img {
