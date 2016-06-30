@@ -4,17 +4,22 @@ import axios from "axios";
 export default class AppHome extends React.Component {
    constructor() {
       super();
+      this.getHotSauceData = this.getHotSauceData.bind(this);
       this.state = {
          sauces: []
       }
    }
 
-   componentDidMount() {
+   getHotSauceData() {
       axios.get("../hotsauces.json").then(function(result) {
          this.setState({ sauces: result.data.list });
          localStorage.clear();
          localStorage.setItem('sauceList', JSON.stringify(result.data.list));
       }.bind(this));
+   }
+
+   componentDidMount() {
+      this.getHotSauceData();
    }
 
    render() {

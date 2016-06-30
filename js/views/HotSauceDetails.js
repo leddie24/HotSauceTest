@@ -5,7 +5,7 @@ export default class HotSauceDetails extends React.Component {
    constructor(props) {
       super(props);
       let idx = this.props.params.id;
-      let sauceInfo = ((this.props.sauces.length == 0) ? JSON.parse(localStorage.getItem('sauceList'))[idx] : this.props.sauces[idx]);
+      let sauceInfo = (this.props.sauces.length == 0) ? JSON.parse(localStorage.getItem('sauceList'))[idx] : this.props.sauces[idx];
       this.state = {
          info: sauceInfo,
          imageClass: null

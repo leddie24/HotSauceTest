@@ -35,3 +35,4 @@ export default class HotSauceList extends React.Component {
 }
 
 HotSauceList.propTypes = { sauces: React.PropTypes.array };
+HotSauceList.defaultProps = { sauces: [] };
