@@ -10,12 +10,11 @@ export default class AppHome extends React.Component {
    }
 
    componentDidMount() {
-      var _this = this;
-      axios.get("../hotsauces.json").then(function(result) {  
-         _this.setState({ sauces: result.data.list });
-          localStorage.clear();
-          localStorage.setItem('sauceList', JSON.stringify(result.data.list));
-      });
+      axios.get("../hotsauces.json").then(function(result) {
+         this.setState({ sauces: result.data.list });
+         localStorage.clear();
+         localStorage.setItem('sauceList', JSON.stringify(result.data.list));
+      }.bind(this));
    }
 
    render() {

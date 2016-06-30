@@ -16,10 +16,10 @@ export default class HotSauceList extends React.Component {
 
   _createHotSaucePanel(sauce, idx) {
     let _this = this;
-      return <HotSauce key={idx}
-                      id={idx}
-                      onClick={_this.viewDetails.bind(null, idx)}
-                      info={sauce} />;
+    return <HotSauce key={idx}
+                    id={idx}
+                    onClick={_this.viewDetails.bind(null, idx)}
+                    info={sauce} />;
   }
 
   render() {
@@ -33,3 +33,5 @@ export default class HotSauceList extends React.Component {
       );
   }
 }
+
+HotSauceList.propTypes = { sauces: React.PropTypes.array };

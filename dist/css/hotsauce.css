@@ -129,11 +129,19 @@ html, body {
 }
 
 .sauceDetails .sauceImgContainer {
-    width: 50vw;
+  width: 100%;
   height: 100%;
   background:  center center no-repeat;
   background-size: auto 100%;
   background-color: #ccc;
+}
+
+.sauceDetails .sauceImgContainer.tall {
+  background-size: auto 100%;
+}
+
+.sauceDetails .sauceImgContainer.wide {
+  background-size: 100% auto;
 }
 
 .sauceDetails .sauceImgContainer img {

@@ -28,3 +28,5 @@ export default class HotSauce extends React.Component {
       );
    }
 }
+
+HotSauce.propTypes = { info: React.PropTypes.object.isRequired };
