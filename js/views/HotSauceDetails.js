@@ -6,20 +6,24 @@ export default class HotSauceDetails extends React.Component {
       super(props);
       this._fixImage = this._fixImage.bind(this);
       let idx = this.props.params.id;
-      let sauceInfo = this.props.sauces[idx];
+      let sauceInfo;
+      if (this.props.sauces.length == 0) {
+         sauceInfo = JSON.parse(localStorage.getItem('sauceList'))[idx];
+      } else {
+         sauceInfo = this.props.sauces[idx];
+      }
       this.state = {
          info: sauceInfo
       };
    }
-
+   
    _fixImage(e) {
       var target = e.currentTarget;
-      var parent = target.parentElement;
-      var pHeight = parent.offsetHeight;
-      var pWidth = parent.offsetWidth;
-      var factor;
       if (target.height >= target.width) {
-         factor = pHeight / target.height;
+         var parent = target.parentElement;
+         var pHeight = parent.offsetHeight;
+         var pWidth = parent.offsetWidth;
+         var factor = pHeight / target.height;
          var height = target.height * factor;
          target.style.height = height + 'px';
       }
