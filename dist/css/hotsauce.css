@@ -129,11 +129,10 @@ html, body {
 }
 
 .sauceDetails .sauceImgContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 50vw;
   height: 100%;
-  background: #ccc;
+  background:  center center no-repeat;
+  background-size: cover;
 }
 
 .sauceDetails .sauceImgContainer img {

@@ -16,7 +16,7 @@ export default class HotSauceDetails extends React.Component {
          info: sauceInfo
       };
    }
-   
+
    _fixImage(e) {
       var target = e.currentTarget;
       if (target.height >= target.width) {
@@ -30,15 +30,15 @@ export default class HotSauceDetails extends React.Component {
    }
 
    render() {
+      var imgStyle={
+         backgroundImage: 'url(' + this.state.info.imageURL + ')'
+      };
       return (
          <div className="sauceDetails">
             <div className="detailsLeft">
                <Link to="/">&lt; Back to Hot Sauce List</Link>
                <h1>{this.state.info.title}</h1>
-               <div className="sauceImgContainer">
-                  <img className="sauceImg tall" 
-                        src={this.state.info.imageURL} 
-                        onLoad={this._fixImage}/>
+               <div className="sauceImgContainer" style={imgStyle}>
                </div>
             </div>
             <div className="detailsRight">
