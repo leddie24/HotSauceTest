@@ -10,10 +10,12 @@ export default class HotSauceList extends React.Component {
     this._createHotSaucePanel = this._createHotSaucePanel.bind(this);
   }
 
+  // Click handler to go to details/:id
   viewDetails(idx) {
     hashHistory.push('details/' + idx);
   }
 
+  // Helper method to generate HotSauce components
   _createHotSaucePanel(sauce, idx) {
     let _this = this;
     return <HotSauce key={idx}
@@ -22,15 +24,20 @@ export default class HotSauceList extends React.Component {
                     info={sauce} />;
   }
 
+  // Render full page if component has sauces props, otherwise render empty page
   render() {
-    return (
-         <div>
-            <h1>Hot Sauce List</h1>
-            <div className='galleryContainer'>
-             {this.props.sauces.map(this._createHotSaucePanel)}
-            </div>
-         </div>
-      );
+    if (this.props.sauces.length === 0) {
+      return (<div></div>);
+    } else {
+      return (
+           <div>
+              <h1>Hot Sauce List</h1>
+              <div className='galleryContainer'>
+               {this.props.sauces.map(this._createHotSaucePanel)}
+              </div>
+           </div>
+        );
+    }
   }
 }
 

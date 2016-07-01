@@ -2,34 +2,34 @@ import React from "react";
 import axios from "axios";
 
 export default class AppHome extends React.Component {
-   constructor() {
-      super();
+   constructor(props) {
+      super(props);
       this.getHotSauceData = this.getHotSauceData.bind(this);
       this.state = {
          sauces: []
-      }
+      };
    }
 
+   // Get initial hotsauce data and force update to re-render child component
    getHotSauceData() {
       axios.get("../hotsauces.json").then(function(result) {
-         this.setState({ sauces: result.data.list });
-         localStorage.clear();
-         localStorage.setItem('sauceList', JSON.stringify(result.data.list));
+         this.setState({
+            sauces: result.data.list
+         });
+         this.forceUpdate();
       }.bind(this));
    }
 
-   componentDidMount() {
+   // Load initial data via ajax
+   componentWillMount() {
       this.getHotSauceData();
    }
 
+   // Render router child component with this.state.sauces as sauces prop
    render() {
-      // Is this proper way of transferring state to children?
-      return (
-         React.cloneElement(this.props.children,
-            {
-               sauces: this.state.sauces
-            }
-         )
-      );
+      return React.cloneElement(this.props.children,
+         {
+            sauces: this.state.sauces
+         });
    }
 }
