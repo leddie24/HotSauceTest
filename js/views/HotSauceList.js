@@ -4,6 +4,7 @@ import { hashHistory } from "react-router";
 import HotSauce from "./HotSauce";
 
 export default class HotSauceList extends React.Component {
+  // Bind component functions and set initial state to props.sauces
   constructor(props) {
     super(props);
     this.state = {
@@ -16,18 +17,18 @@ export default class HotSauceList extends React.Component {
   }
 
   // Update image class and global sauceInfo when the component receives props
-   componentWillReceiveProps() {
-      this.setSauceState();
-   }
+  componentWillReceiveProps() {
+    this.setSauceState();
+  }
 
-   // Sets the sauce info once props are passed
-   setSauceState() {
-      if (this.props.sauces.length > 0) {
-        this.setState({
-          sauces: this.props.sauces
-        });
-      }
-   }
+  // Sets the sauce info once props are passed
+  setSauceState() {
+    if (this.props.sauces.length > 0) {
+      this.setState({
+        sauces: this.props.sauces
+      });
+    }
+  }
 
   // Click handler to go to /#/details/:id
   viewDetails(idx) {
@@ -54,24 +55,20 @@ export default class HotSauceList extends React.Component {
                     info={sauce} />;
   }
 
-  // Render full page if component has sauces set, otherwise render empty page
+  // Render page
   render() {
-    if (this.state.sauces.length === 0) {
-      return (<div></div>);
-    } else {
-      return (
-           <div>
-              <h1>Hot Sauce List</h1>
-              <input type="text"
-                    ref="filterText"
-                    placeholder="Search by Title"
-                    onChange={this.filterList} />
-              <div className='galleryContainer'>
-                {this.state.sauces.map(this._createHotSaucePanel)}
-              </div>
-           </div>
-        );
-    }
+    return (
+       <div>
+          <h1>Hot Sauce List</h1>
+          <input type="text"
+                ref="filterText"
+                placeholder="Search by Title"
+                onChange={this.filterList} />
+          <div className='galleryContainer'>
+            {this.state.sauces.map(this._createHotSaucePanel)}
+          </div>
+       </div>
+    );
   }
 }
 

@@ -2,15 +2,18 @@ import React from "react";
 import Link from "react-router";
 
 export default class HotSauce extends React.Component {
+   // Bind component functions
    constructor(props) {
     super(props);
     this.viewDetails = this.viewDetails.bind(this);
   }
 
+   // Click handler to view details
    viewDetails() {
       this.props.onClick();
    }
 
+   // Render HotSauce item component
    render() {
       return (
          <div className="saucePanel"
