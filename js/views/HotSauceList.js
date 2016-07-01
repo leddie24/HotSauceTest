@@ -10,7 +10,7 @@ export default class HotSauceList extends React.Component {
     this._createHotSaucePanel = this._createHotSaucePanel.bind(this);
   }
 
-  // Click handler to go to details/:id
+  // Click handler to go to /#/details/:id
   viewDetails(idx) {
     hashHistory.push('details/' + idx);
   }
