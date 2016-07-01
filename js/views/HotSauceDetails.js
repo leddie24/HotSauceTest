@@ -46,7 +46,10 @@ export default class HotSauceDetails extends React.Component {
    // Render empty div if sauceInfo or imageClass state is empty, otherwise render page
    render() {
       if (!this.sauceDetail || !this.state.imageClass) {
-         return (<div></div>);
+         return (<div>
+                     <div className="loader">Loading...</div>
+                  </div>
+               );
       } else {
          // Declare hot sauce background image url
          let imgStyle = { 
