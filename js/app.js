@@ -11,6 +11,7 @@ import HotSauceDetails from "./views/HotSauceDetails";
 // Define SPA container
 const app = document.getElementById('app');
 
+// Define react router paths
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={AppHome}>

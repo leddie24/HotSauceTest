@@ -6,13 +6,43 @@ import HotSauce from "./HotSauce";
 export default class HotSauceList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      sauces: this.props.sauces
+    };
+    this.setSauceState = this.setSauceState.bind(this);
     this.viewDetails = this.viewDetails.bind(this);
+    this.filterList = this.filterList.bind(this);
     this._createHotSaucePanel = this._createHotSaucePanel.bind(this);
   }
+
+  // Update image class and global sauceInfo when the component receives props
+   componentWillReceiveProps() {
+      this.setSauceState();
+   }
+
+   // Sets the sauce info once props are passed
+   setSauceState() {
+      if (this.props.sauces.length > 0) {
+        this.setState({
+          sauces: this.props.sauces
+        });
+      }
+   }
 
   // Click handler to go to /#/details/:id
   viewDetails(idx) {
     hashHistory.push('details/' + idx);
+  }
+
+  // Filter list on input change
+  filterList(e) {
+    var filteredList = this.props.sauces;
+    filteredList = filteredList.filter(function(sauce) {
+      return sauce.title.toLowerCase().search(e.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({
+      sauces: filteredList
+    });
   }
 
   // Helper method to generate HotSauce components
@@ -24,16 +54,20 @@ export default class HotSauceList extends React.Component {
                     info={sauce} />;
   }
 
-  // Render full page if component has sauces props, otherwise render empty page
+  // Render full page if component has sauces set, otherwise render empty page
   render() {
-    if (this.props.sauces.length === 0) {
+    if (this.state.sauces.length === 0) {
       return (<div></div>);
     } else {
       return (
            <div>
               <h1>Hot Sauce List</h1>
+              <input type="text"
+                    ref="filterText"
+                    placeholder="Search by Title"
+                    onChange={this.filterList} />
               <div className='galleryContainer'>
-               {this.props.sauces.map(this._createHotSaucePanel)}
+                {this.state.sauces.map(this._createHotSaucePanel)}
               </div>
            </div>
         );
@@ -41,5 +75,5 @@ export default class HotSauceList extends React.Component {
   }
 }
 
-HotSauceList.propTypes = { sauces: React.PropTypes.array };
+HotSauceList.propTypes = { sauces: React.PropTypes.array.isRequired };
 HotSauceList.defaultProps = { sauces: [] };

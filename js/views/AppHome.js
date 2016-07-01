@@ -4,10 +4,10 @@ import axios from "axios";
 export default class AppHome extends React.Component {
    constructor(props) {
       super(props);
-      this.getHotSauceData = this.getHotSauceData.bind(this);
       this.state = {
          sauces: []
       };
+      this.getHotSauceData = this.getHotSauceData.bind(this);
    }
 
    // Get initial hotsauce data and force update to re-render child component
@@ -21,7 +21,7 @@ export default class AppHome extends React.Component {
    }
 
    // Load initial data via ajax
-   componentWillMount() {
+   componentDidMount() {
       this.getHotSauceData();
    }
 
