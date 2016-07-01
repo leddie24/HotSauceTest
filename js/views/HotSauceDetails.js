@@ -1,22 +1,22 @@
 import React from "react";
 import { Link } from "react-router";
 
+// Not sure if this is correct/best practice?  Declared a sauceInfo variable so I don't have
+// to redefine within component methods
+let sauceInfo = null;
 export default class HotSauceDetails extends React.Component {
    constructor(props) {
       super(props);
-      let idx = this.props.params.id;
       this.state = {
-         // info: sauceInfo,
-         imageClass: null,
-         index: idx
+         imageClass: null
       };
       this._getImageClass = this._getImageClass.bind(this);
       this._setImageClass = this._setImageClass.bind(this);
    }
 
-   // Update image class when the component receives props
+   // Update image class and global sauceInfo when the component receives props
    componentWillReceiveProps() {
-      let sauceInfo = this.props.sauces[this.state.index];
+      sauceInfo = this.props.sauces[this.props.params.id];
       if (sauceInfo) {
          this._setImageClass(sauceInfo.imageURL);
       }
@@ -41,13 +41,12 @@ export default class HotSauceDetails extends React.Component {
       img.src = url;
    }
 
-   // Render empty div if props or imageClass state is empty, otherwise render page
+   // Render empty div if sauceInfo or imageClass state is empty, otherwise render page
    render() {
-      if (this.props.sauces.length === 0 || !this.state.imageClass) {
+      if (!sauceInfo || !this.state.imageClass) {
          return (<div></div>);
       } else {
-         // Don't render unless image class is set
-         let sauceInfo = this.props.sauces[this.state.index];
+         // Declare image background url
          let imgStyle = { 
             backgroundImage: 'url(' + sauceInfo.imageURL + ')'
          };
