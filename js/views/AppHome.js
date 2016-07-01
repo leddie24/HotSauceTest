@@ -25,11 +25,13 @@ export default class AppHome extends React.Component {
       this.getHotSauceData();
    }
 
-   // Render empty page if sauces state is undefined
+   // Render loading page if sauces state is undefined
    // Render router child component with this.state.sauces as sauces prop
    render() {
       if (!this.state.sauces) {
-         return (<div></div>);
+         return (<div>
+            <div className="loader">Loading...</div>
+         </div>);
       } else {
          return React.cloneElement(this.props.children,
             {

@@ -15,8 +15,9 @@ export default class HotSauce extends React.Component {
 
    // Render HotSauce item component
    render() {
+      let visibleClass = (this.props.visible) ? 'show' : 'hide';
       return (
-         <div className="saucePanel"
+         <div className={"saucePanel " + visibleClass}
                onClick={this.viewDetails}
                >
             <div className="sauceImgContainer">
